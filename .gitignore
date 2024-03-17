@@ -1,0 +1,6 @@
+.idea
+*.pyc
+*.pt
+*.pth
+*.ipynb
+*.MP4
