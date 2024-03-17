@@ -1,15 +1,15 @@
-import torch
-import numpy as np
-from pathlib import Path
-from .SegNet import SegNet
-from ...folder_utils import numerical_sort
-from matplotlib import pyplot as plt
-from PIL import Image
 import glob
 import os
+from pathlib import Path
+
+import numpy as np
+import torch
+from PIL import Image
+from matplotlib import pyplot as plt
 from tqdm import tqdm
 
-TRAINED_SEGNET_FILE_NAME = "./segnet_bce_1125_45_epoch.pth"
+from .SegNet import SegNet
+from ...folder_utils import numerical_sort
 
 
 def extend_image(img, channels=None):
@@ -33,13 +33,8 @@ def shrink_image(img, channels=None):
 
 
 # TODO: async
-async def segment_images(input_folder: Path, output_folder: Path):
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"Function: {segment_images.__name__}. Device: {device}")
-
-    model = SegNet().to(device)
-    module_path = Path(__file__).resolve().parent
-    model.load_state_dict(torch.load(module_path / TRAINED_SEGNET_FILE_NAME, map_location=torch.device(device)))
+async def segment_images(model, input_folder: Path, output_folder: Path):
+    print(f"Function: {segment_images.__name__}")
 
     images = []
 

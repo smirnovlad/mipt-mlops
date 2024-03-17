@@ -1,21 +1,17 @@
-from ultralytics import YOLO
 from pathlib import Path
+
+import cv2
 import torch
 from ultralytics.utils.plotting import Annotator
-import cv2
 
-model = YOLO('./yolov8m-pose.pt')
 
 # TODO: async
-async def hpe_images(input_folder: Path, output_folder: Path):
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"Function: {hpe_images.__name__}. Device: {device}")
-
-    global model
-    model.to(device)
+async def hpe_images(model, input_folder: Path, output_folder: Path):
+    print(f"Function: {hpe_images.__name__}")
 
     with torch.no_grad():
-        results = model.predict(source=input_folder, save=True, project="processed", name="hpe_frames", conf=0.3, exist_ok=True)
+        results = model.predict(source=input_folder, save=True, project="processed", name="hpe_frames", conf=0.3,
+                                exist_ok=True)
 
     return results
 

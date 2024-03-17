@@ -29,7 +29,7 @@ def fragment_video(video_path: Path, output_folder: Path, fps: int):
     while True:
         if current_batch_frames_count == fps:
             while current_batch_processed_frames_count < fps_original:
-                ret, frame = cap.read()
+                _, _ = cap.read()
                 current_batch_processed_frames_count += 1
             current_batch_frames_count = 0
             current_batch_processed_frames_count = 0
@@ -54,11 +54,11 @@ def fragment_video(video_path: Path, output_folder: Path, fps: int):
 
 
 def create_video_from_images(input_folder: Path, output_video_path: Path, fps: int):
-    frameSize = (720, 1280)  # must be equal to input size!!!
+    frame_size = (720, 1280)  # must be equal to input size!!!
 
     print("Output video path: ", output_video_path.absolute().as_posix())
 
-    out = cv2.VideoWriter(output_video_path.absolute().as_posix(), cv2.VideoWriter_fourcc(*'avc1'), fps, frameSize)
+    out = cv2.VideoWriter(output_video_path.absolute().as_posix(), cv2.VideoWriter_fourcc(*'avc1'), fps, frame_size)
 
     for filename in sorted(glob.glob(input_folder.absolute().as_posix() + "/*.jpg"), key=numerical_sort):
         img = cv2.imread(filename)

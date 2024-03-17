@@ -1,5 +1,10 @@
 # Subway Detection Assistant 🤖
 
+## Structure
+
+Бэкенд
+![img.png](example%2Fimg.png)
+
 ## About ❔
 
 The AI solution for detecting individuals crossing the safety line on the subway platform has been implemented.
@@ -42,7 +47,7 @@ Dataset of frames on Roboflow: [link](https://app.roboflow.com/study-jzyvf/metro
 
 I trained the model for 45 epochs, gradually decreasing the learning rate after a certain number of epochs. Training notebook: [Segmentation_1125.ipynb](research/segmentation/Segmentation_1125.ipynb)
 
-Download the model: [segnet_bce_1125_45_epoch.pth](backend/processing/ml/segmentation/segnet_bce_1125_45_epoch.pth)
+Download the model: [segnet_bce_1125_45_epoch.pth](backend/processing/ml/segnet_bce_1125_45_epoch.pth)
 
 ### Algorithm
 

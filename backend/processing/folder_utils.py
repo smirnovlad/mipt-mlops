@@ -1,7 +1,7 @@
 import os
+import re
 import shutil
 from pathlib import Path
-import re
 
 
 def clear_folders(folders):
@@ -15,6 +15,7 @@ def clear_folders(folders):
                     clear_folders([file_path])
             except Exception as e:
                 print('Failed to delete %s. Reason: %s' % (file_path, e))
+
 
 def create_folders(folders):
     for folder in folders:

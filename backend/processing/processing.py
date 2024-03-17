@@ -1,7 +1,8 @@
-from .folder_utils import clear_folders, create_folders
-from .ml.utils import process_images
-from .video_utils import fragment_video, create_video_from_images
 from config import *
+
+from .folder_utils import clear_folders, create_folders
+from .ml.infer import process_images
+from .video_utils import fragment_video, create_video_from_images
 
 create_folders([IMAGES_FOLDER, PROCESSED_FRAMES_FOLDER])
 
